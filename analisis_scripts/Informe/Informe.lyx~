@@ -158,6 +158,60 @@ lstparams "breaklines=true,captionpos=b,frame=tb,language=Matlab"
 
 \end_layout
 
+\begin_layout Standard
+Este caso es una aplicación del ejemplo anterior.
+ Se obtiene un filtro highpass (
+\shape italic
+unsharp
+\shape default
+) y se lo aplica a una imagen, convolucionando la imagen con el filtro mencionad
+o.
+ El resultado final es una imagen enfocada, 
+\shape italic
+sharpened
+\shape default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Imagenes/2barb.png
+	lyxscale 50
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Resultado del script, un sharpen de la imagen original.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 spect.m
 \end_layout
@@ -171,6 +225,162 @@ lstparams "breaklines=true,captionpos=b,frame=tb,language=Matlab"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+En este caso, se crea la siguiente imagen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Imagenes/3img.png
+	lyxscale 50
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Imagen original.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego calculo de FFT, y ploteo el módulo y el logaritmo del módulo, como
+ se ve a continuación.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Imagenes/3mag.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Magnitud.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Imagenes/3log.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Logaritmo de la magnitud.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+primero recorro la imagen original de manera horizontal, y se puede ver
+ un pulso.
+ Esto en frecuencia es una sinc con un lobulo central mayor que el periodo
+ del pulso en tiempo.
+\end_layout
+
+\begin_layout Standard
+el ancho se debe al lobulo central que es dos veces el ancho de los laterales,mi
+smo para vertical como para horizontal
 \end_layout
 
 \begin_layout Section

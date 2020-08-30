@@ -180,9 +180,11 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename Imagenes/2barb.png
-	scale 70
+	lyxscale 50
+	scale 60
 
 \end_inset
 
@@ -223,6 +225,171 @@ lstparams "breaklines=true,captionpos=b,frame=tb,language=Matlab"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+En este caso, se crea la siguiente imagen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Imagenes/3img.png
+	lyxscale 50
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Imagen original.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego se realiza el calculo de FFT, y se plotea el módulo y el logaritmo
+ del módulo, como se ve a continuación.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Imagenes/3mag.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Módulo de la magnitud.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Imagenes/3log.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Logaritmo de la magnitud.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo que llama la atención es que en la imagen original el rectángulo sea
+ vertical y los espectros sean horizontales.
+ Esto se puede explicar pensando la FFT como una FFT horizontal y otra vertical.
+ Recorriendo la imagen original de manera horizontal, se puede ver un pulso
+ de período pequeño.
+ Esto en frecuencia es una sinc() con un lóbulo central mayor que el período
+ del pulso en el tiempo.
+ Luego, si recorremos la imagen original de manera vertical, el pulso es
+ de mayor período lo que significa una sinc con un lóbulo central menor
+ en frecuencia.
+ Es decir, son sinc() de frecuencias distintas, porque los pulsos en tiempo
+ son de diferente período.
+\end_layout
+
+\begin_layout Standard
+La motivación para plotear el logaritmo del espectro surge de que el display
+ puede mostrar valores entre 0-255 si se plotea módulo, lo que se puede
+ aprovechar más al calcular el logaritmo de este.
 \end_layout
 
 \begin_layout Section
