@@ -184,7 +184,7 @@ status open
 \begin_inset Graphics
 	filename Imagenes/2barb.png
 	lyxscale 50
-	scale 70
+	scale 60
 
 \end_inset
 
@@ -267,8 +267,8 @@ Imagen original.
 \end_layout
 
 \begin_layout Standard
-Luego calculo de FFT, y ploteo el módulo y el logaritmo del módulo, como
- se ve a continuación.
+Luego se realiza el calculo de FFT, y se plotea el módulo y el logaritmo
+ del módulo, como se ve a continuación.
 \end_layout
 
 \begin_layout Standard
@@ -308,7 +308,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Magnitud.
+Módulo de la magnitud.
 \end_layout
 
 \end_inset
@@ -372,15 +372,24 @@ Logaritmo de la magnitud.
 \end_layout
 
 \begin_layout Standard
-primero recorro la imagen original de manera horizontal, y se puede ver
- un pulso.
- Esto en frecuencia es una sinc con un lobulo central mayor que el periodo
- del pulso en tiempo.
+Lo que llama la atención es que en la imagen original el rectángulo sea
+ vertical y los espectros sean horizontales.
+ Esto se puede explicar pensando la FFT como una FFT horizontal y otra vertical.
+ Recorriendo la imagen original de manera horizontal, se puede ver un pulso
+ de período pequeño.
+ Esto en frecuencia es una sinc() con un lóbulo central mayor que el período
+ del pulso en el tiempo.
+ Luego, si recorremos la imagen original de manera vertical, el pulso es
+ de mayor período lo que significa una sinc con un lóbulo central menor
+ en frecuencia.
+ Es decir, son sinc() de frecuencias distintas, porque los pulsos en tiempo
+ son de diferente período.
 \end_layout
 
 \begin_layout Standard
-el ancho se debe al lobulo central que es dos veces el ancho de los laterales,mi
-smo para vertical como para horizontal
+La motivación para plotear el logaritmo del espectro surge de que el display
+ puede mostrar valores entre 0-255 si se plotea módulo, lo que se puede
+ aprovechar más al calcular el logaritmo de este.
 \end_layout
 
 \begin_layout Section

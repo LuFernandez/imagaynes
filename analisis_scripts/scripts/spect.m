@@ -11,8 +11,8 @@ F = fftshift(F); % Center FFT
 % Measure the minimum and maximum value of the transform amplitude
 min(min(abs(F))) % 0
 max(max(abs(F))) % 100
-figure; imshow(abs(F),[0,100]); colormap(jet); colorbar
-figure; imshow(log(1+abs(F)),[0,3]); colormap(jet); colorbar
+figure; imshow(abs(F),[0,100]); colormap(gray); colorbar
+figure; imshow(log(1+abs(F)),[0,3]); colormap(gray); colorbar
 % What is the main difference between representing the amplitude and its logarithm?
 % Look at the phases
 figure; imshow(angle(F),[-pi,pi]); colorbar
