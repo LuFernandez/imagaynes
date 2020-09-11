@@ -1,7 +1,7 @@
 clear all;
 close all;
 
-h = fspecial('unsharp');             %% Hi pass
+h = fspecial('unsharp')            %% Hi pass
 
 freqz2(h);
 

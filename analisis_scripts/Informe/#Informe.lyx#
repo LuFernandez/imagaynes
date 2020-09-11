@@ -1,0 +1,441 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 25mm
+\topmargin 2.5cm
+\rightmargin 25mm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "caratula.lyx"
+
+\end_inset
+
+
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+ex1.m
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "C:/Users/lugfe/Documents/GitHub/imagaynes/analisis_scripts/scripts/ex1.m"
+lstparams "breaklines=true,captionpos=b,frame=tb,language=Matlab"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En primer lugar se crea un filtro pasaaltos, y se obtiene la respuesta en
+ frecuencia del mismo, donde se puede ver que es un filtro pasaaltos.
+ 
+\end_layout
+
+\begin_layout Standard
+A continuación se crea una imagen con un 1 en el (0, 0); una delta o impulso,
+ y se convoluciona con el filtro.
+ La matriz resultante queda de N+M-2=258, siendo N=256, y M=3, el orden
+ del filtro.
+ Al convolucionar la delta con el filtro, éste queda centrado en la imagen
+ de 256x256.
+\end_layout
+
+\begin_layout Standard
+Se calcula la fft de la convolución y se toma su módulo.
+ Luego, se normaliza dividiendo por el máximo de los valores de la fft.
+ La función fftshift(X), swapea el primer cuadrante de X con el tercero,
+ y el segundo con el cuarto, como si invirtiera desde el centro hacia fuera
+ los valores, quedando los valores aumentando hacia y en los bordes; y los
+ valores menores en el centro.
+ Luego se grafican lineal y logarítmicamente.
+ En resumen, lo que se obtiene es la representación en una imagen monocromática
+ de la respuesta en frecuencia del pasaaltos definido al principio.
+ Al aplicar este tipo de filtro sobre una imagen, lo que se obtendría es
+ un efecto de enfoque o 
+\shape italic
+sharpen
+\shape default
+.
+\end_layout
+
+\begin_layout Section
+ex2.m
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "C:/Users/lugfe/Documents/GitHub/imagaynes/analisis_scripts/scripts/ex2.m"
+lstparams "breaklines=true,captionpos=b,frame=tb,language=Matlab"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Este caso es una aplicación del ejemplo anterior.
+ Se obtiene un filtro highpass (
+\shape italic
+unsharp
+\shape default
+) y se lo aplica a una imagen, convolucionando la imagen con el filtro mencionad
+o.
+ El resultado final es una imagen enfocada, 
+\shape italic
+sharpened
+\shape default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Imagenes/2barb.png
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Resultado del script, un sharpen de la imagen original.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+spect.m
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "C:/Users/lugfe/Documents/GitHub/imagaynes/analisis_scripts/scripts/spect.m"
+lstparams "breaklines=true,captionpos=b,frame=tb,language=Matlab"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En este caso, se crea la siguiente imagen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Imagenes/3img.png
+	lyxscale 50
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Imagen original.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego se realiza el calculo de FFT, y se plotea el módulo y el logaritmo
+ del módulo, como se ve a continuación.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Imagenes/3mag.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Módulo de la magnitud.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Imagenes/3log.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Logaritmo de la magnitud.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo que llama la atención es que en la imagen original el rectángulo sea
+ vertical y los espectros sean horizontales.
+ Esto se puede explicar pensando la FFT como una FFT horizontal y otra vertical.
+ Recorriendo la imagen original de manera horizontal, se puede ver un pulso
+ de período pequeño.
+ Esto en frecuencia es una sinc() con un lóbulo central mayor que el período
+ del pulso en el tiempo.
+ Luego, si recorremos la imagen original de manera vertical, el pulso es
+ de mayor período lo que significa una sinc con un lóbulo central menor
+ en frecuencia.
+ Es decir, son sinc() de frecuencias distintas, porque los pulsos en tiempo
+ son de diferente período.
+\end_layout
+
+\begin_layout Standard
+La motivación para plotear el logaritmo del espectro surge de que el display
+ puede mostrar valores entre 0-255 si se plotea módulo, lo que se puede
+ aprovechar más al calcular el logaritmo de este.
+\end_layout
+
+\begin_layout Section
+viasampling.m
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "C:/Users/lugfe/Documents/GitHub/imagaynes/analisis_scripts/scripts/viasampling.m"
+lstparams "breaklines=true,captionpos=b,frame=tb,language=Matlab"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+myallias.m
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "C:/Users/lugfe/Documents/GitHub/imagaynes/analisis_scripts/scripts/myallias.m"
+lstparams "breaklines=true,captionpos=b,frame=tb,language=Matlab"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+image_aliasing_new.m
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand lstinputlisting
+filename "C:/Users/lugfe/Documents/GitHub/imagaynes/analisis_scripts/scripts/image_aliasing_new.m"
+lstparams "breaklines=true,captionpos=b,frame=tb,language=Matlab"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
