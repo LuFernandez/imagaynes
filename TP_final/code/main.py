@@ -1,3 +1,5 @@
+#codigo basado en https://github.com/shantnu/Webcam-Face-Detect
+
 import cv2
 import sys
 import logging as log
@@ -5,7 +7,6 @@ import datetime as dt
 from time import sleep
 
 #tecla q for quit
-
 
 faceCascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 eyeCascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
@@ -32,9 +33,20 @@ while True:
         minSize=(30, 30)
     )
 
+
     # Draw a rectangle around the faces
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        roi_gray = gray[y:y + h, x:x + w]   #region of interest
+        roi_color = frame[y:y + h, x:x + w]
+
+        # si encuentra caras, encuentra ojos y también le dibuja rectangulos
+        eyes = eyeCascade.detectMultiScale(roi_gray)
+        for (ex, ey, ew, eh) in eyes:
+            cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (255, 255, 255), 2)
+
+
+
 
     if anterior != len(faces):
         anterior = len(faces)
