@@ -29,7 +29,6 @@ while True:
         pass
 
     lens = cv2.imread(".\lens.PNG", cv2.IMREAD_UNCHANGED)
-    #lens = cv2.cvtColor(lens, cv2.COLOR_RGBA2RGB)
 
     # Capture frame-by-frame
     ret, frame = video_capture.read()

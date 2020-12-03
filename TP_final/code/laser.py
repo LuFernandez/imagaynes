@@ -29,7 +29,7 @@ def addLasers(frame, x, y, w, h, eye_x, eye_y, eye_width, eye_height, lens):
     #resizeo lens para que entre en el area del ojo
     lens = cv2.resize(lens, (lens_w, lens_h), interpolation = cv2.INTER_AREA)
 
-    ret, og_mask = cv2.threshold(cv2.cvtColor(lens, cv2.COLOR_BGR2GRAY), 10, 255, cv2.THRESH_BINARY_INV)
+    ret, og_mask = cv2.threshold(cv2.cvtColor(lens, cv2.COLOR_BGR2GRAY), 127, 255, cv2.THRESH_BINARY_INV)
     og_mask_inv = cv2.bitwise_not(og_mask)
 
     mask = cv2.resize(og_mask, (lens_w, lens_h), interpolation = cv2.INTER_AREA)
