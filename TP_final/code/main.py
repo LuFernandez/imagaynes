@@ -21,16 +21,15 @@ video_capture = cv2.VideoCapture(0)
 cv2.namedWindow("Video")
 anterior = 0
 
-#preparo lasers, calentando motores
-lasers = cv2.imread("./lens.PNG")
-#cv2.imshow('Video', lasers)
-
 
 while True:
     if not video_capture.isOpened():
         print('Unable to load camera.')
         sleep(5)
         pass
+
+    lens = cv2.imread(".\lens.PNG", cv2.IMREAD_UNCHANGED)
+    #lens = cv2.cvtColor(lens, cv2.COLOR_RGBA2RGB)
 
     # Capture frame-by-frame
     ret, frame = video_capture.read()
@@ -50,7 +49,7 @@ while True:
         eyes = eye_cascade.detectMultiScale(roi_gray, scaleFactor=1.1, minNeighbors=3,minSize=(30, 30))
         for (eye_x, eye_y, eye_width, eye_height) in eyes:
             cv2.rectangle(roi_color, (eye_x, eye_y), (eye_x + eye_width, eye_y + eye_height), (0, 0, 255), 2)
-            addLasers()
+            frame = addLasers(frame, x, y, w, h, eye_x, eye_y, eye_width, eye_height, lens)
 
 
 
