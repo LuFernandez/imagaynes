@@ -35,7 +35,7 @@ while True:
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.05, minNeighbors=6,minSize=(30, 30))
+    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.05, minNeighbors=7,minSize=(30, 30))
 
 
     # Draw a rectangle around the faces
@@ -45,7 +45,7 @@ while True:
         roi_color = frame[y:y + h, x:x + w]
 
         # si encuentra caras, encuentra ojos y también le dibuja rectangulos
-        eyes = eye_cascade.detectMultiScale(roi_gray, scaleFactor=1.1, minNeighbors=3,minSize=(30, 30))
+        eyes = eye_cascade.detectMultiScale(roi_gray, scaleFactor=1.1, minNeighbors=6,minSize=(30, 30))
         for (eye_x, eye_y, eye_width, eye_height) in eyes:
             cv2.rectangle(roi_color, (eye_x, eye_y), (eye_x + eye_width, eye_y + eye_height), (0, 0, 255), 2)
             frame = addLasers(frame, x, y, w, h, eye_x, eye_y, eye_width, eye_height, lens)

@@ -3,19 +3,17 @@ import numpy as np
 
 def addLasers(frame, x, y, w, h, eye_x, eye_y, eye_width, eye_height, lens):
 
-    # preparo lasers, calentando motores
+    # preparo lasers
     lens_h_og, lens_w_og, lens_ch = lens.shape
-    print(np.shape(lens))
-    lens_h = int(1.5*eye_height)
+    lens_h = int(1.7*eye_height)
     lens_w = lens_h
-    print(eye_x, x)
 
 
     #coordenadas del laser/lens
     #eye_x and eye_y son relativos a x e y
-    lens_x1 = eye_x + x
+    lens_x1 = eye_x + x - eye_width//4
     lens_x2 = lens_x1 + lens_w
-    lens_y1 = y + eye_y
+    lens_y1 = y + eye_y -eye_height//4
     lens_y2 = lens_y1 + lens_h
 
 
@@ -47,26 +45,6 @@ def addLasers(frame, x, y, w, h, eye_x, eye_y, eye_width, eye_height, lens):
 
     # put back in original image
     frame[lens_y1:lens_y2, lens_x1:lens_x2] = dst
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     return frame
