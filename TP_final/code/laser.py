@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-def addLasers(frame, x, y, w, h, eye_x, eye_y, eye_width, eye_height, lens):
+def addLasers(frame, x, y, frame_w, frame_h, eye_x, eye_y, eye_width, eye_height, lens):
 
     # preparo lasers
     lens_h_og, lens_w_og, lens_ch = lens.shape
@@ -11,16 +11,19 @@ def addLasers(frame, x, y, w, h, eye_x, eye_y, eye_width, eye_height, lens):
 
     #coordenadas del laser/lens
     #eye_x and eye_y son relativos a x e y
-    lens_x1 = eye_x + x - eye_width//4
+    lens_x1 = eye_x + x - int(eye_width//4)
     lens_x2 = lens_x1 + lens_w
-    lens_y1 = y + eye_y -eye_height//4
+    lens_y1 = y + eye_y - int(eye_height//4)
     lens_y2 = lens_y1 + lens_h
 
 
     #
     #
-    #revisar que no se vaya del img.w e img.h
-    #
+    #reviso que no se vaya del img.w e img.h
+    if lens_x1 < 0: lens_x1 = 0;
+    if lens_y1 < 0: lens_y1 = 0;
+    if lens_x2 > frame_w: lens_x2 = frame_w;
+    if lens_y2 > frame_h: lens_y2 = frame_h;
     #
 
 
@@ -39,8 +42,6 @@ def addLasers(frame, x, y, w, h, eye_x, eye_y, eye_width, eye_height, lens):
     roi_fg = cv2.bitwise_and(lens, lens, mask=mask_inv)
 
     roi_fg = roi_fg[:,:,0:3]
-    print(np.shape(roi_bg))
-    print(np.shape(roi_fg))
     dst = cv2.add(roi_bg, roi_fg)
 
     # put back in original image

@@ -6,16 +6,16 @@ import logging as log
 import datetime as dt
 from time import sleep
 
+
 from laser import addLasers
-
-
+from metrics import estimateBrightness
 
 
 #tecla q for quit
 
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
-log.basicConfig(filename='webcam.log',level=log.INFO)
+#log.basicConfig(filename='webcam.log',level=log.INFO)
 
 video_capture = cv2.VideoCapture(0)
 cv2.namedWindow("Video")
@@ -32,10 +32,12 @@ while True:
 
     # Capture frame-by-frame
     ret, frame = video_capture.read()
+    frame_h, frame_w = frame.shape[:2]
+
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.05, minNeighbors=7,minSize=(30, 30))
+    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=7,minSize=(50, 50))
 
 
     # Draw a rectangle around the faces
@@ -45,10 +47,17 @@ while True:
         roi_color = frame[y:y + h, x:x + w]
 
         # si encuentra caras, encuentra ojos y también le dibuja rectangulos
-        eyes = eye_cascade.detectMultiScale(roi_gray, scaleFactor=1.1, minNeighbors=6,minSize=(30, 30))
+        eyes = eye_cascade.detectMultiScale(roi_gray, scaleFactor=1.1, minNeighbors=4,minSize=(50, 50))
         for (eye_x, eye_y, eye_width, eye_height) in eyes:
             cv2.rectangle(roi_color, (eye_x, eye_y), (eye_x + eye_width, eye_y + eye_height), (0, 0, 255), 2)
-            frame = addLasers(frame, x, y, w, h, eye_x, eye_y, eye_width, eye_height, lens)
+
+            if len(eyes) == 2:
+                frame = addLasers(frame, x, y, frame_w, frame_h, eye_x, eye_y, eye_width, eye_height, lens)
+                estimateBrightness(gray)
+            # estimo el brightness de la region de la cara cuando identifica un ojo
+            #if len(eyes) == 2:   #si identifica una cantidad par de ojos
+                #
+            #
 
 
 
